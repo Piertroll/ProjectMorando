@@ -14,11 +14,13 @@
     </div>
     <script>
         function saveImageAs() {
-            const link = document.createElement('a');
-            link.href = 'example_image.png';
-            link.download = 'example_image.png';
-            link.dispatchEvent(new MouseEvent('click'));
-        }
+    const link = document.createElement('a');
+    link.href = 'example_image.png';
+    link.download = 'example_image.png';
+    document.body.appendChild(link); // Append the link element to the DOM
+    link.click(); // Simulate a click on the link
+    document.body.removeChild(link); // Clean up: remove the link from the DOM
+}
     </script>
 </body>
 </html>
