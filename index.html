@@ -16,7 +16,7 @@
         function saveImageAs() {
             const link = document.createElement('a');
             link.href = 'example_image.png';
-            link.download = '';
+            link.download = 'example_image.png';
             link.dispatchEvent(new MouseEvent('click'));
         }
     </script>
