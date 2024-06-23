@@ -3,16 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Download Immagine</title>
+    <title>Save Image As</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <h1>Scarica l'Immagine</h1>
-        <p>Clicca sul bottone qui sotto per scaricare l'immagine:</p>
-        <a href="example_image.png" download>
-            <button>Download</button>
-        </a>
+        <h1>Salva l'Immagine</h1>
+        <p>Clicca sul bottone qui sotto per salvare l'immagine:</p>
+        <button onclick="saveImageAs()">Salva Immagine</button>
     </div>
+    <script>
+        function saveImageAs() {
+            const link = document.createElement('a');
+            link.href = 'images/example-image.jpg';
+            link.download = '';
+            link.dispatchEvent(new MouseEvent('click'));
+        }
+    </script>
 </body>
 </html>
