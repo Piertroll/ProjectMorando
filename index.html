@@ -14,13 +14,20 @@
     </div>
     <script>
         function saveImageAs() {
-    const link = document.createElement('a');
-    link.href = 'example_image.png';
-    link.download = 'example_image.png';
-    document.body.appendChild(link); // Append the link element to the DOM
-    link.click(); // Simulate a click on the link
-    document.body.removeChild(link); // Clean up: remove the link from the DOM
-}
+            fetch('example_image.png')
+                .then(response => response.blob())
+                .then(blob => {
+                    const url = window.URL.createObjectURL(blob);
+                    const link = document.createElement('a');
+                    link.href = url;
+                    link.download = 'example_image.png';
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    window.URL.revokeObjectURL(url);
+                })
+                .catch(error => console.error('Error fetching the image:', error));
+        }
     </script>
 </body>
 </html>
